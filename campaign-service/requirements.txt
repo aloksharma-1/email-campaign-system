@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+firebase-admin
+pydantic
+python-jose[cryptography]
+python-multipart 

@@ -1,0 +1,84 @@
+🚧 Project: Email Marketing Campaign System (DevOps on GCP)
+📁 Proposed Repo Structure:
+bash
+Copy
+Edit
+email-campaign-system/
+├── user-service/
+│   ├── main.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── campaign-service/
+│   ├── main.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── emailer-service/
+│   ├── main.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── kubernetes/
+│   ├── user-deployment.yaml
+│   ├── campaign-deployment.yaml
+│   ├── emailer-deployment.yaml
+├── terraform/
+│   ├── main.tf         # GKE cluster, IAM, NAT, etc.
+│   └── variables.tf
+├── cloudbuild.yaml     # CI/CD config
+└── README.md           # Setup & Docs
+🧱 Microservices Breakdown:
+🔐 user-service
+User registration/login (JWT Auth)
+
+Stores users in Firestore
+
+CRUD + role-based access
+
+📩 campaign-service
+Create/update marketing campaigns
+
+Schedule campaigns
+
+Store in Firestore with scheduling metadata
+
+✉️ emailer-service
+Background email dispatcher
+
+Consumes messages via Pub/Sub or Firestore triggers
+
+Sends (mock) emails via Mailgun/SendGrid API
+
+🛠️ Infrastructure via Terraform:
+GKE Cluster
+
+Service Accounts + IAM roles
+
+NAT + VPC setup
+
+Pub/Sub topics (optional)
+
+Firestore (in Native mode)
+
+GCR setup
+
+🚀 CI/CD with Cloud Build:
+Auto-build and deploy containers to GKE on commit
+
+Branch-based deployments (e.g. staging/prod)
+
+YAML config: cloudbuild.yaml
+
+📊 Monitoring:
+GKE Monitoring (via Stackdriver)
+
+Logs for each pod & service
+
+Optional: custom alerts for failed campaigns
+
+🔐 Security:
+IAM roles per service
+
+Cloud NAT & private nodes
+
+Cloud Armor WAF (optional)
+
+TLS termination with Ingress
